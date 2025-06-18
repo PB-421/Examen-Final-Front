@@ -5,8 +5,8 @@ export default function Layout({ Component }: PageProps) {
   // do something with state here
   return (
     <>
-    <Header />
-    <Component />
+      <Header />
+      <Component />
     </>
   );
 }
