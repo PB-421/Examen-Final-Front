@@ -1,5 +1,6 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import CharList from "../islands/charlist.tsx";
+import CharList from "../components/charlist.tsx";
+
 import { char } from "../types.tsx";
 
 async function getPersonajes():Promise<char[]> {
@@ -22,6 +23,6 @@ export const handler:Handlers<data> = {
 export default function Home(props:PageProps<data>) {
   const {chars} = props.data
   return (
-    <CharList chars={chars} />
+    <CharList chars={chars}/>
   );
 }

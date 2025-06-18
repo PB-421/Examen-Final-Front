@@ -27,7 +27,7 @@ export default function CharCard({char}:data){
     return(
         <div class="card">
             {char.image !== ""&& <img src={char.image} alt={char.name} />}
-            {char.image === "" && <img src="/no-image.jpg?__frsh_c=34f676c81b05e1f573aa6867cbfe80be3288b355" alt={char.name} />}
+            {char.image === "" && <img src="../no-image.jpg" alt={char.name} />}
             <div class="card-info">
                 <a class="name" href={"/characters/"+char.id}>{char.name}</a>
                 {fav && <span class="star fav" onClick={() => setFav(false)}>★<div></div></span>}

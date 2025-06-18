@@ -27,7 +27,7 @@ export default function CharDetail({ char }: data) {
   return (
     <div class="detail">
       {char.image !== "" && <img src={char.image} alt={char.name} />}
-      {char.image === "" && <img src="/no-image.jpg?__frsh_c=34f676c81b05e1f573aa6867cbfe80be3288b355" alt={char.name} />}
+      {char.image === "" && <img src="../no-image.jpg" alt={char.name} />}
         <h2>{char.name} {fav && (
           <span class="star fav" onClick={() => setFav(false)}>
             ★<div></div>
@@ -38,9 +38,10 @@ export default function CharDetail({ char }: data) {
             ★<div></div>
           </span>
         )}</h2>
-        <p>Casa: {char.house}</p>
-        {char.alive && <p>Vivo</p>}
-        {!char.alive && <p>Muerto</p>}
+        {char.house !== "" && <p>Casa: {char.house}</p>}
+        {char.house === "" && <p>Casa: Desconocida</p>}
+        {char.alive && <p>Estado: Vivo</p>}
+        {!char.alive && <p>Estado: Muerto</p>}
         <a href="/">Volver</a>
     </div>
   );

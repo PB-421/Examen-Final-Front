@@ -26,7 +26,7 @@ export function esFavorito(char: char): boolean {
 
 export function addFavorito(char: char): void {
   const date = new Date();
-  const expire = new Date(date.getTime() + 365 * 24 * 60 * 60 * 1000)
+  const expire = new Date(date.getTime() + 7 * 24 * 60 * 60 * 1000)
     .toUTCString();
   const favs = getFavoritos();
   favs.push(char.id);
@@ -38,12 +38,12 @@ export function eraseFavorito(char: char): void {
   const filtrados = favs.filter((id) => id !== char.id);
   if (filtrados.length === 0) {
     const date = new Date();
-    const expire = new Date(date.getTime() - 365 * 24 * 60 * 60 * 1000)
+    const expire = new Date(date.getTime() - 7 * 24 * 60 * 60 * 1000)
       .toUTCString();
     document.cookie = `favs=${filtrados.join(",")}; path=/; expires=${expire}`;
   } else {
     const date = new Date();
-    const expire = new Date(date.getTime() + 365 * 24 * 60 * 60 * 1000)
+    const expire = new Date(date.getTime() + 7 * 24 * 60 * 60 * 1000)
       .toUTCString();
     document.cookie = `favs=${filtrados.join(",")}; path=/; expires=${expire}`;
   }
