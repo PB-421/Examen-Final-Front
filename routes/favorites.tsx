@@ -13,9 +13,16 @@ type data = {
 }
 
 export const handler:Handlers<data> = {
-    GET: async (_req:Request,ctx:FreshContext<unknown,data>) => {
-      const personajes = await getPersonajes()
-      return ctx.render({chars:personajes})
+    GET: async (req:Request,ctx:FreshContext<unknown,data>) => {
+      const personajesOG = await getPersonajes()
+      const headers = req.headers
+      const favs = headers.get("Cookie")?.split("; ").find((cookie) => cookie.trim().startsWith("favs="))?.split("=")[1].split(",")
+      if(favs){
+      const personajesFiltrados = personajesOG.filter((char) => favs?.includes(char.id))
+      return ctx.render({chars:personajesFiltrados})
+      } else {
+        return ctx.render({chars: []})
+      }
     }
 }
 
